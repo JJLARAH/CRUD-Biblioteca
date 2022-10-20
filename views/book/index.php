@@ -39,8 +39,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'title',
             'pagecount',
-            'id_author',
-            'id_genre',
+            [
+                'attribute' => 'author',
+                'value' => function ($model) {
+                    return $model->author->name . ' ' . $model->author->surname;
+                }
+            ],
+            [
+                'attribute' => 'genre',
+                'value' => 'genre.genre'
+            ],
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Book $model, $key, $index, $column) {

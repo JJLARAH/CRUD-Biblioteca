@@ -39,8 +39,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'title',
             'pagecount',
-            'id_author',
-            'id_genre',
+            [
+                'label'=>'Author',
+                'value'=> $model->author->name.' '.$model->author->surname,
+            ],
+            [
+                'label'=>'Genre',
+                'value'=> $model->genre->genre,
+            ],
         ],
     ]) ?>
 
