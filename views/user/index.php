@@ -34,14 +34,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Photo',
                 'format' => 'html',
                 'value' => function ($data) {
-                    return Html::img($data->photo, ['width' => '70px']);
+                    return Html::img($data->photo, ['width' => '80px']);
                 },
             ],
             'name',
             'surname',
-            'gender',
-            'phonenum',
-            //'location',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Users $model, $key, $index, $column) {
