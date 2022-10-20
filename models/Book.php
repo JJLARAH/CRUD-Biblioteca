@@ -79,7 +79,7 @@ class Book extends \yii\db\ActiveRecord
      */
     public function getBorrows()
     {
-        return $this->hasMany(Borrows::class, ['id_book' => 'id_book']);
+        return $this->hasMany(Borrow::class, ['id_book' => 'id_book']);
     }
 
     /**
