@@ -42,9 +42,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => '@w
             ['label' => 'Home', 'url' => ['/site/index']],
             // ['label' => 'About', 'url' => ['/site/about']],
             // ['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'Users', 'url' => ['/users/users']],
+            ['label' => 'Users', 'url' => ['/user/index']],
             ['label' => 'Books', 'url' => ['/book/index']],
-            ['label' => 'Borrows', 'url' => ['/book/index']],
+            ['label' => 'Borrows', 'url' => ['/borrow/index']],
             // Yii::$app->user->isGuest
             //     ? ['label' => 'Login', 'url' => ['/site/login']]
             //     : '<li class="nav-item">'

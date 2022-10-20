@@ -21,7 +21,7 @@ $this->title = 'My Library';
 
                 <p>Manage users</p>
 
-                <p><a class="btn btn-outline-success" href="?r=users/users">Users CRUD &raquo;</a></p>
+                <p><a class="btn btn-outline-success" href="?r=user/index">Users CRUD &raquo;</a></p>
             </div>
             <div class="col-auto">
                 <h2>Books</h2>
@@ -35,7 +35,7 @@ $this->title = 'My Library';
 
                 <p>Control of library borrows</p>
 
-                <p><a class="btn btn-outline-success" href="?r=book/index">Borrows Control &raquo;</a></p>
+                <p><a class="btn btn-outline-success" href="?r=borrows/index">Borrows Control &raquo;</a></p>
             </div>
         </div>
 
