@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Borrows history', ['/borrow/history', 'id_user' => $model->id_user], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= DetailView::widget([
