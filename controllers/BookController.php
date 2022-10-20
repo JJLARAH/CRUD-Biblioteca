@@ -152,7 +152,7 @@ class BookController extends Controller
                             unlink($model->cover);
                         }
 
-                        $routeFile = 'uploads/' . time() . "_" . $model->image->baseName . "." . $model->image->extension;
+                        $routeFile = 'uploads/books/' . time() . "_" . $model->image->baseName . "." . $model->image->extension;
 
                         if ($model->image->saveAs($routeFile)) {
                             $model->cover = $routeFile;
