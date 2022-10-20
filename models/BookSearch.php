@@ -11,6 +11,9 @@ use app\models\Book;
  */
 class BookSearch extends Book
 {
+
+    public $author;
+    public $genre;
     /**
      * {@inheritdoc}
      */
@@ -18,7 +21,7 @@ class BookSearch extends Book
     {
         return [
             [['id_book', 'pagecount', 'id_author', 'id_genre'], 'integer'],
-            [['title', 'cover'], 'safe'],
+            [['title', 'cover', 'author', 'genre'], 'safe'],
         ];
     }
 
@@ -42,12 +45,24 @@ class BookSearch extends Book
     {
         $query = Book::find();
 
+        $query->joinWith(['author', 'genre']);
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination'=>['pageSize'=>5]
+            'pagination' => ['pageSize' => 5]
         ]);
+
+        $dataProvider->sort->attributes['author'] = [
+            'asc' => ['book_author.name' => SORT_ASC],
+            'desc' => ['book_author.name' => SORT_DESC],
+        ];
+
+        $dataProvider->sort->attributes['genre'] = [
+            'asc' => ['book_genre.genre' => SORT_ASC],
+            'desc' => ['book_genre.genre' => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -60,16 +75,16 @@ class BookSearch extends Book
         // grid filtering conditions
         $query->andFilterWhere([
             'id_book' => $this->id_book,
-            'pagecount' => $this->pagecount, 
-            'id_author' => $this->id_author, 
-            'id_genre' => $this->id_genre, 
+            'pagecount' => $this->pagecount,
+            'id_author' => $this->id_author,
+            'id_genre' => $this->id_genre,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'pagecount', $this->pagecount])
             ->andFilterWhere(['like', 'cover', $this->cover])
-            ->andFilterWhere(['like', 'id_author', $this->id_author])
-            ->andFilterWhere(['like', 'id_genre', $this->id_genre]);
+            ->andFilterWhere(['like', 'book_author.name', $this->author])
+            ->andFilterWhere(['like', 'book_genre.genre', $this->genre]);
 
         return $dataProvider;
     }
