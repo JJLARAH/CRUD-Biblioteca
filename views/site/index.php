@@ -35,7 +35,7 @@ $this->title = 'My Library';
 
                 <p>Control of library borrows</p>
 
-                <p><a class="btn btn-outline-success" href="?r=borrows/index">Borrows Control &raquo;</a></p>
+                <p><a class="btn btn-outline-success" href="?r=borrow/index">Borrows Control &raquo;</a></p>
             </div>
         </div>
 
