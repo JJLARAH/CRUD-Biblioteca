@@ -34,7 +34,6 @@ class Borrow extends \yii\db\ActiveRecord
         return [
             [['id_user', 'id_book'], 'required'],
             [['id_user', 'id_book'], 'integer'],
-            [['date_borrow', 'date_return'], 'date'],
             [['date_borrow', 'date_return'], 'safe'],
             [['id_book'], 'exist', 'skipOnError' => true, 'targetClass' => Book::class, 'targetAttribute' => ['id_book' => 'id_book']],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['id_user' => 'id_user']],
