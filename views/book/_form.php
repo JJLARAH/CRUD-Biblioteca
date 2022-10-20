@@ -21,7 +21,9 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'id_genre')->textInput(['type' => 'number', 'maxlength' => true, 'placeholder' => 'Genre of the book', 'required' => '']) ?>
 
-        <?= Html::img($model->cover, ['width' => '80px']); ?>
+        <div class="col-sm-1">
+            <?= Html::img($model->cover, ['width' => '240px']); ?>
+        </div>
 
         <?= $form->field($model, 'image')->fileInput() ?>
 
