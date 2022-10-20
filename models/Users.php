@@ -15,7 +15,7 @@ use Yii;
  * @property string $location
  * @property string|null $photo
  *
- * @property Borrows[] $borrows
+ * @property Borrow[] $borrow
  */
 class Users extends \yii\db\ActiveRecord
 {
@@ -67,6 +67,6 @@ class Users extends \yii\db\ActiveRecord
      */
     public function getBorrows()
     {
-        return $this->hasMany(Borrows::class, ['id_user' => 'id_user']);
+        return $this->hasMany(Borrow::class, ['id_user' => 'id_user']);
     }
 }
