@@ -18,7 +18,7 @@ class UsersSearch extends Users
     {
         return [
             [['id_user', 'phonenum'], 'integer'],
-            [['name', 'surname', 'gender', 'location'], 'safe'],
+            [['name', 'photo','surname', 'gender', 'location'], 'safe'],
         ];
     }
 
@@ -63,6 +63,7 @@ class UsersSearch extends Users
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'photo', $this->photo])
             ->andFilterWhere(['like', 'surname', $this->surname])
             ->andFilterWhere(['like', 'gender', $this->gender])
             ->andFilterWhere(['like', 'location', $this->location]);

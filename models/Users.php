@@ -13,11 +13,14 @@ use Yii;
  * @property string|null $gender
  * @property int $phonenum
  * @property string $location
+ * @property string|null $photo
  *
  * @property Borrows[] $borrows
  */
 class Users extends \yii\db\ActiveRecord
 {
+    public $image;
+
     /**
      * {@inheritdoc}
      */
@@ -33,10 +36,11 @@ class Users extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'surname', 'phonenum', 'location'], 'required'],
-            [['phonenum'], 'integer'],
+            [['phonenum'], 'integer','max'=>999999999999999],
             [['name', 'surname'], 'string', 'max' => 45],
             [['gender'], 'string', 'max' => 20],
             [['location'], 'string', 'max' => 255],
+            [['image'], 'file', 'extensions' => 'jpg,jpeg,png,webp']
         ];
     }
 
@@ -47,6 +51,7 @@ class Users extends \yii\db\ActiveRecord
     {
         return [
             'id_user' => 'Id User',
+            'image' => 'Photo',
             'name' => 'Name',
             'surname' => 'Surname',
             'gender' => 'Gender',
