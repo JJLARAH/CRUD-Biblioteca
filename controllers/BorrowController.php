@@ -48,6 +48,25 @@ class BorrowController extends Controller
     }
 
     /**
+     * Lists all users borrows history model.
+     *
+     * @return string
+     * @return string
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionHistory($id_user)
+    {
+        $searchModel = new BorrowSearch();
+        $dataProvider = $searchModel->searchHistory($this->request->post($id_user));
+
+        return $this->render('history', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'model' => $this->findModel($id_user),
+        ]);
+    }
+
+    /**
      * Displays a single Borrow model.
      * @param int $id_borrow Id Borrow
      * @return string
