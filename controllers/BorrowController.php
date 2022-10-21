@@ -57,12 +57,11 @@ class BorrowController extends Controller
     public function actionHistory($id_user)
     {
         $searchModel = new BorrowSearch();
-        $dataProvider = $searchModel->searchHistory($this->request->post($id_user));
+        $dataProvider = $searchModel->searchHistory($this->request->get($id_user));
 
         return $this->render('history', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'model' => $this->findModel($id_user),
         ]);
     }
 
