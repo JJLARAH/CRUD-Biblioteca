@@ -1,7 +1,11 @@
 <?php
 
+use app\models\Book;
+use app\models\BookAuthor;
+use app\models\BookGenre;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\widgets\ActiveForm; 
+use \yii\helpers\ArrayHelper;
 
 /** @var yii\web\View $this */
 /** @var app\models\Book $model */
@@ -17,10 +21,12 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'pagecount')->textInput(['type' => 'number', 'maxlength' => true, 'placeholder' => 'Total number of pages', 'required' => '']) ?>
 
-        <?= $form->field($model, 'id_author')->textInput(['type' => 'number', 'maxlength' => true, 'placeholder' => 'Author of the book', 'required' => '']) ?>
+        <?php $var = ArrayHelper::map(BookAuthor::find()->all(), 'id_author', 'name'); ?>
+        <?= $form->field($model, 'id_author')->dropDownList($var, ['id_author' => 'Select Author']); ?>
 
-        <?= $form->field($model, 'id_genre')->textInput(['type' => 'number', 'maxlength' => true, 'placeholder' => 'Genre of the book', 'required' => '']) ?>
-
+        <?php $var = ArrayHelper::map(BookGenre::find()->all(), 'id_genre', 'genre'); ?>
+        <?= $form->field($model, 'id_genre')->dropDownList($var, ['id_genre' => 'Select Genre']); ?>
+        
         <div class="col-sm-1">
             <?= Html::img($model->cover, ['width' => '240px']); ?>
         </div>
