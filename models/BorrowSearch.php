@@ -98,7 +98,8 @@ class BorrowSearch extends Borrow
      */
     public function searchHistory($params)
     {
-        $query = Borrow::find()->where(['users.id_user' => 3]);
+
+        $query = Borrow::find()->where(['borrows.id_user' => $_GET['id_user']]);
 
         $query->joinWith(['book', 'user']);
 
