@@ -24,14 +24,25 @@ use \yii\helpers\ArrayHelper;
         <?php $var = ArrayHelper::map(BookAuthor::find()
             ->all(), 'id_author', 'surname','name');
         ?>
-        <?= $form->field($model, 'author')
-            ->dropDownList($var, ['id_author' => 'Select Author']);
+        <?= $form->field($model, 'id_author')
+            ->label('Author name')
+            ->dropDownList($var, [
+                'id_author' => 'Select Author',
+                'onchange' => 'javascript:if ($(this).val() == 1 || $(this).val() == "Other") {
+                    $("#place-holder, #field-size").show();                    
+                     } else {                    
+                    $("#place-holder, #field-size").hide();    
+                      }'
+                //Onchange para mostrar textInput cuando se seleccione campo "Other"
+            ]);
+        $form->field($model, 'id_author')->textInput(array('id' => 'place-holder', 'style' => 'display:none'));
         ?>
 
         <?php $var = ArrayHelper::map(BookGenre::find()
             ->all(), 'id_genre', 'genre');
         ?>
-        <?= $form->field($model, 'genre')
+        <?= $form->field($model, 'id_genre',)
+            ->label('Genre')
             ->dropDownList($var, ['id_genre' => 'Select Genre'])
         ?>
 
@@ -45,7 +56,7 @@ use \yii\helpers\ArrayHelper;
         <div class="form-group">
             <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
         </div>
-        
+
 
     </div>
     <?php ActiveForm::end(); ?>
