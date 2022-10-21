@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use \yii\helpers\ArrayHelper;
+use app\models\Users;
+use app\models\Book;
 
 /** @var yii\web\View $this */
 /** @var app\models\Borrow $model */
@@ -11,19 +14,32 @@ use yii\widgets\ActiveForm;
 <div class="borrow-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <div class="row g-3">
 
-    <?= $form->field($model, 'id_user')->textInput() ?>
 
-    <?= $form->field($model, 'id_book')->textInput() ?>
+        <?php $var = ArrayHelper::map(Users::find()
+            ->all(), 'id_user', 'surname', 'name');
+        ?>
+        <?= $form->field($model, 'user')
+            ->dropDownList($var, ['id_user' => 'Select User']);
+        ?>
 
-    <?= $form->field($model, 'date_borrow')->textInput() ?>
+        <?php $var = ArrayHelper::map(Book::find()
+            ->all(), 'id_book', 'title');
+        ?>
+        <?= $form->field($model, 'book')
+            ->dropDownList($var, ['id_book' => 'Select Book']);
+        ?>
 
-    <?= $form->field($model, 'date_return')->textInput() ?>
+        <?= $form->field($model, 'date_borrow')->textInput() ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= $form->field($model, 'date_return')->textInput() ?>
+
+        <div class="form-group">
+            <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        </div>
+
+        <?php ActiveForm::end(); ?>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
+    
 </div>
