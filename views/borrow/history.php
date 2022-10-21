@@ -11,7 +11,7 @@ use yii\grid\GridView;
 /** @var app\models\BorrowSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Borrows History: ' . $model->user->name .' '. $model->user->surname;
+$this->title = 'Borrows History for user: ' . ' ' . $_GET['id_user'];
 $this->params['breadcrumbs'][] = ['label' => 'Borrows', 'url' => ['index']];
 $this->params['breadcrumbs'][] = 'History';
 ?>
