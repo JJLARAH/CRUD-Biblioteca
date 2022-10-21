@@ -31,9 +31,9 @@ use app\models\Book;
             ->dropDownList($var, ['id_book' => 'Select Book']);
         ?>
 
-        <?= $form->field($model, 'date_borrow')->textInput() ?>
+        <?= $form->field($model, 'date_borrow')->textInput(['type'=>'date']) ?>
 
-        <?= $form->field($model, 'date_return')->textInput() ?>
+        <?= $form->field($model, 'date_return')->textInput(['type'=>'date']) ?>
 
         <div class="form-group">
             <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
