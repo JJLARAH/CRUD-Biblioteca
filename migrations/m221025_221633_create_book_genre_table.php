@@ -16,6 +16,20 @@ class m221025_221633_create_book_genre_table extends Migration
             'id_genre' => $this->primaryKey(),
             'genre' => $this->string(45)->notNull(),
         ]);
+
+        $this->batchInsert('book_genre', 'genre', [
+            ['Unknow'],
+            ['Thriller'],
+            ['Science'],
+            ['Drama'],
+            ['History'],
+            ['Adventure'],
+            ['Mystery'],
+            ['Comic'],
+            ['Sci-fi'],
+            ['Fantasy'],
+            ['Religion'],
+        ]);
     }
 
     /**
