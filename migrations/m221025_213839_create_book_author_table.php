@@ -17,6 +17,12 @@ class m221025_213839_create_book_author_table extends Migration
             'name' => $this->string(45),
             'surname' => $this->string(45),
         ]);
+
+        $this->batchInsert('book_author', ['name', 'surname'], [
+            ['Unknow', 'Unknow'],
+            ['Juan', 'Escutia'],
+            ['Tsun', 'Tzu']
+        ]);
     }
 
     /**
