@@ -17,7 +17,7 @@ class m221025_221633_create_book_genre_table extends Migration
             'genre' => $this->string(45)->notNull(),
         ]);
 
-        $this->batchInsert('book_genre', 'genre', [
+        $this->batchInsert('book_genre', ['genre'], [
             ['Unknow'],
             ['Thriller'],
             ['Science'],
