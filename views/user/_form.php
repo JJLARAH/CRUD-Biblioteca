@@ -10,7 +10,9 @@ use yii\widgets\ActiveForm;
 
 <div class="users-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['class' => 'test']
+    ]); ?>
     <div class="row g-3">
 
         <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
