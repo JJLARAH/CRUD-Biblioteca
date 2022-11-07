@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Book;
 use app\models\BookSearch;
+use app\models\UsersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,6 +21,13 @@ class BookController extends Controller
      */
     public function behaviors()
     {
+        $books = Book::find()->with('author')->all();
+
+        foreach($books as  $book) {
+            echo $book->author->name; //Lazy Load
+        }
+
+        
         return array_merge(
             parent::behaviors(),
             [
