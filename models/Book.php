@@ -9,7 +9,7 @@ use Yii;
  *
  * @property int $id_book
  * @property string $title
- * @property int $pagecount
+ * @property int $pagecount NMumero de páagina
  * @property int $id_author
  * @property int $id_genre
  * @property string|null $cover
